@@ -15,20 +15,20 @@ var pike = {
 
 //random num generates # of cust in between the min/max customer per hr and push into an array
   custPerHr: function(){
-    for(var i=0;i<time.length;i++){
+    for(var i = 0; i < time.length; i++){
       this.custEachHr.push(Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust);
     }
-},
+  },
 
 
 //generate the number of sale for each day and push into an array
   cookPerSale: function(){
 
-      this.custPerHr();
-      for(var i=0;i<time.length;i++){
-        this.cookEachHr.push(Math.floor(this.custEachHr[i] * this.avgCook));
+    this.custPerHr();
+    for(var i = 0; i < time.length; i++){
+      this.cookEachHr.push(Math.floor(this.custEachHr[i] * this.avgCook));
 
-      }
+    }
   },
 
 
@@ -54,12 +54,12 @@ var pike = {
   },
 
   sum: function(a,b){
-    return a+b;
+    return a + b;
   },
 
   sumCust: function(){
     var totalCust = 0;
-    for(var i=0;i<this.custEachHr.length;i++){
+    for(var i = 0; i < this.custEachHr.length; i++){
 
       totalCust = this.sum(totalCust,this.custEachHr[i]);
 
@@ -71,7 +71,7 @@ var pike = {
 
   sumCook: function(){
     var totalCook = 0;
-    for(var i=0;i<this.cookEachHr.length;i++){
+    for(var i = 0;i < this.cookEachHr.length;i++){
 
       totalCook = this.sum(totalCook,this.cookEachHr[i]);
 
@@ -82,12 +82,12 @@ var pike = {
 
   total: function(){
     var pikeUL = document.getElementById('pike');
-      var liEl = document.createElement('li');
-      liEl.textContent = 'Total' + ':  ' + this.sumCook();
-      pikeUL.appendChild(liEl);
-    }
+    var liEl = document.createElement('li');
+    liEl.textContent = 'Total' + ':  ' + this.sumCook();
+    pikeUL.appendChild(liEl);
+  }
 
-  };
+};
 
 pike.sumCust();
 pike.sumCook();
@@ -111,20 +111,20 @@ var seatac = {
 
 //random num generates # of cust in between the min/max customer per hr and push into an array
   custPerHr: function(){
-    for(var i=0;i<time.length;i++){
+    for(var i = 0; i < time.length; i++){
       this.custEachHr.push(Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust);
     }
-},
+  },
 
 
 //generate the number of sale for each day and push into an array
   cookPerSale: function(){
 
-      this.custPerHr();
-      for(var i=0;i<time.length;i++){
-        this.cookEachHr.push(Math.floor(this.custEachHr[i] * this.avgCook));
+    this.custPerHr();
+    for(var i = 0; i < time.length;i++){
+      this.cookEachHr.push(Math.floor(this.custEachHr[i] * this.avgCook));
 
-      }
+    }
   },
 
 
@@ -149,12 +149,12 @@ var seatac = {
   },
 
   sum: function(a,b){
-    return a+b;
+    return a + b;
   },
 
   sumCust: function(){
     var totalCust = 0;
-    for(var i=0;i<this.custEachHr.length;i++){
+    for(var i = 0; i < this.custEachHr.length;i++){
 
 
       totalCust = this.sum(totalCust,this.custEachHr[i]);
@@ -166,7 +166,7 @@ var seatac = {
 
   sumCook: function(){
     var totalCook = 0;
-    for(var i=0;i<this.cookEachHr.length;i++){
+    for(var i = 0; i < this.cookEachHr.length;i++){
 
 
       totalCook = this.sum(totalCook,this.cookEachHr[i]);
@@ -178,10 +178,10 @@ var seatac = {
 
   total: function(){
     var seatacUl = document.getElementById('seatac');
-      var liEl = document.createElement('li');
-      liEl.textContent = 'Total' + ':  ' + this.sumCook();
-      seatacUl.appendChild(liEl);
-    }
+    var liEl = document.createElement('li');
+    liEl.textContent = 'Total' + ':  ' + this.sumCook();
+    seatacUl.appendChild(liEl);
+  }
 };
 
 seatac.cookPerSale();
@@ -205,20 +205,19 @@ var seacenter = {
 
 //random num generates # of cust in between the min/max customer per hr and push into an array
   custPerHr: function(){
-    for(var i=0;i<time.length;i++){
+    for(var i = 0; i < time.length;i++){
       this.custEachHr.push(Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust);
-    }
-},
+    }},
 
 
 //generate the number of sale for each day and push into an array
   cookPerSale: function(){
 
-      this.custPerHr();
-      for(var i=0;i<time.length;i++){
-        this.cookEachHr.push(Math.floor(this.custEachHr[i] * this.avgCook));
+    this.custPerHr();
+    for(var i = 0; i < time.length;i++){
+      this.cookEachHr.push(Math.floor(this.custEachHr[i] * this.avgCook));
 
-      }
+    }
   },
 
 
@@ -243,12 +242,12 @@ var seacenter = {
   },
 
   sum: function(a,b){
-    return a+b;
+    return a + b;
   },
 
   sumCust: function(){
     var totalCust = 0;
-    for(var i=0;i<this.custEachHr.length;i++){
+    for(var i = 0; i < this.custEachHr.length;i++){
 
 
       totalCust = this.sum(totalCust,this.custEachHr[i]);
@@ -260,7 +259,7 @@ var seacenter = {
 
   sumCook: function(){
     var totalCook = 0;
-    for(var i=0;i<this.cookEachHr.length;i++){
+    for(var i = 0;i < this.cookEachHr.length;i++){
 
 
       totalCook = this.sum(totalCook,this.cookEachHr[i]);
@@ -272,10 +271,10 @@ var seacenter = {
 
   total: function(){
     var seacenterUL = document.getElementById('seacenter');
-      var liEl = document.createElement('li');
-      liEl.textContent = 'Total' + ':  ' + this.sumCook();
-      seacenterUL.appendChild(liEl);
-    }
+    var liEl = document.createElement('li');
+    liEl.textContent = 'Total' + ':  ' + this.sumCook();
+    seacenterUL.appendChild(liEl);
+  }
 };
 
 seacenter.cookPerSale();
@@ -299,20 +298,20 @@ var caphill = {
 
 //random num generates # of cust in between the min/max customer per hr and push into an array
   custPerHr: function(){
-    for(var i=0;i<time.length;i++){
+    for(var i = 0; i < time.length;i++){
       this.custEachHr.push(Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust);
     }
-},
+  },
 
 
 //generate the number of sale for each day and push into an array
   cookPerSale: function(){
 
-      this.custPerHr();
-      for(var i=0;i<time.length;i++){
-        this.cookEachHr.push(Math.floor(this.custEachHr[i] * this.avgCook));
+    this.custPerHr();
+    for(var i = 0; i < time.length;i++){
+      this.cookEachHr.push(Math.floor(this.custEachHr[i] * this.avgCook));
 
-      }
+    }
   },
 
 
@@ -337,12 +336,12 @@ var caphill = {
   },
 
   sum: function(a,b){
-    return a+b;
+    return a + b;
   },
 
   sumCust: function(){
     var totalCust = 0;
-    for(var i=0;i<this.custEachHr.length;i++){
+    for(var i = 0; i < this.custEachHr.length;i++){
 
 
       totalCust = this.sum(totalCust,this.custEachHr[i]);
@@ -354,7 +353,7 @@ var caphill = {
 
   sumCook: function(){
     var totalCook = 0;
-    for(var i=0;i<this.cookEachHr.length;i++){
+    for(var i = 0;i < this.cookEachHr.length;i++){
 
 
       totalCook = this.sum(totalCook,this.cookEachHr[i]);
@@ -366,10 +365,10 @@ var caphill = {
 
   total: function(){
     var caphillUL = document.getElementById('caphill');
-      var liEl = document.createElement('li');
-      liEl.textContent = 'Total' + ':  ' + this.sumCook();
-      caphillUL.appendChild(liEl);
-    }
+    var liEl = document.createElement('li');
+    liEl.textContent = 'Total' + ':  ' + this.sumCook();
+    caphillUL.appendChild(liEl);
+  }
 };
 
 caphill.cookPerSale();
@@ -393,20 +392,19 @@ var alki = {
 
 //random num generates # of cust in between the min/max customer per hr and push into an array
   custPerHr: function(){
-    for(var i=0;i<time.length;i++){
+    for(var i = 0; i < time.length;i++){
       this.custEachHr.push(Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust);
-    }
-},
+    }},
 
 
 //generate the number of sale for each day and push into an array
   cookPerSale: function(){
 
-      this.custPerHr();
-      for(var i=0;i<time.length;i++){
-        this.cookEachHr.push(Math.floor(this.custEachHr[i] * this.avgCook));
+    this.custPerHr();
+    for(var i = 0; i < time.length;i++){
+      this.cookEachHr.push(Math.floor(this.custEachHr[i] * this.avgCook));
 
-      }
+    }
   },
 
 
@@ -431,12 +429,12 @@ var alki = {
   },
 
   sum: function(a,b){
-    return a+b;
+    return a + b;
   },
 
   sumCust: function(){
     var totalCust = 0;
-    for(var i=0;i<this.custEachHr.length;i++){
+    for(var i = 0; i < this.custEachHr.length;i++){
 
 
       totalCust = this.sum(totalCust,this.custEachHr[i]);
@@ -448,7 +446,7 @@ var alki = {
 
   sumCook: function(){
     var totalCook = 0;
-    for(var i=0;i<this.cookEachHr.length;i++){
+    for(var i = 0; i < this.cookEachHr.length;i++){
 
 
       totalCook = this.sum(totalCook,this.cookEachHr[i]);
@@ -460,10 +458,10 @@ var alki = {
 
   total: function(){
     var alkiUL = document.getElementById('alki');
-      var liEl = document.createElement('li');
-      liEl.textContent = 'Total' + ':  ' + this.sumCook();
-      alkiUL.appendChild(liEl);
-    }
+    var liEl = document.createElement('li');
+    liEl.textContent = 'Total' + ':  ' + this.sumCook();
+    alkiUL.appendChild(liEl);
+  }
 };
 
 alki.cookPerSale();
