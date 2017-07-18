@@ -48,6 +48,7 @@ var pike = {
       // 2. Give it content
       liEl.textContent = time[i] + ':  ' + this.cookEachHr[i];
 
+
       // 3. Append it to a certain place in the DOM
       // parentElement.appendChild(childElement)
       pikeUL.appendChild(liEl);
@@ -78,13 +79,27 @@ var pike = {
 
     }
     return totalCook;
-  }
-};
+  },
+
+
+  total: function(){
+    var pikeUL = document.getElementById('pike');
+      var liEl = document.createElement('li');
+      liEl.textContent = 'Total' + ':  ' + this.sumCook();
+      pikeUL.appendChild(liEl);
+    }
+
+  };
+
+
 
 pike.sumCust();
 pike.sumCook();
 pike.cookPerSale();
 pike.render();
+pike.total();
+
+
 
 
 //object for a specific location of sale
@@ -163,13 +178,21 @@ var seatac = {
 
     return totalCook;
 
-  }
+  },
+
+  total: function(){
+    var seatacUl = document.getElementById('seatac');
+      var liEl = document.createElement('li');
+      liEl.textContent = 'Total' + ':  ' + this.sumCook();
+      seatacUl.appendChild(liEl);
+    }
 };
 
 seatac.cookPerSale();
 seatac.render();
 seatac.sumCust();
 seatac.sumCook();
+seatac.total();
 
 
 
@@ -249,13 +272,21 @@ var seacenter = {
 
     return totalCook;
 
-  }
+  },
+
+  total: function(){
+    var seacenterUL = document.getElementById('seacenter');
+      var liEl = document.createElement('li');
+      liEl.textContent = 'Total' + ':  ' + this.sumCook();
+      seacenterUL.appendChild(liEl);
+    }
 };
 
 seacenter.cookPerSale();
 seacenter.render();
 seacenter.sumCust();
 seacenter.sumCook();
+seacenter.total();
 
 
 
@@ -335,13 +366,21 @@ var caphill = {
 
     return totalCook;
 
-  }
+  },
+
+  total: function(){
+    var caphillUL = document.getElementById('caphill');
+      var liEl = document.createElement('li');
+      liEl.textContent = 'Total' + ':  ' + this.sumCook();
+      caphillUL.appendChild(liEl);
+    }
 };
 
 caphill.cookPerSale();
 caphill.render();
 caphill.sumCust();
 caphill.sumCook();
+caphill.total();
 
 
 
@@ -423,10 +462,18 @@ var alki = {
 
     return totalCook;
 
-  }
+  },
+
+  total: function(){
+    var alkiUL = document.getElementById('alki');
+      var liEl = document.createElement('li');
+      liEl.textContent = 'Total' + ':  ' + this.sumCook();
+      alkiUL.appendChild(liEl);
+    }
 };
 
 alki.cookPerSale();
 alki.render();
 alki.sumCust();
 alki.sumCook();
+alki.total();
