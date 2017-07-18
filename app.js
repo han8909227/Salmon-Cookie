@@ -11,6 +11,7 @@ var pike = {
   avgCook: 6.3,
   custEachHr: [],
   cookEachHr: [],
+  total1:0,
 
 
 //random num generates # of cust in between the min/max customer per hr and push into an array
@@ -23,11 +24,10 @@ var pike = {
 
 //generate the number of sale for each day and push into an array
   cookPerSale: function(){
-
     this.custPerHr();
     for(var i = 0; i < time.length; i++){
-      this.cookEachHr.push(Math.floor(this.custEachHr[i] * this.avgCook));
-
+      this.cookEachHr.push(Math.ceil(this.custEachHr[i] * this.avgCook));
+      this.total1 += this.cookEachHr[i];
     }
   },
 
@@ -37,14 +37,14 @@ var pike = {
     var pikeUL = document.getElementById('pike');
     // This will render the seagull data array to the DOM
     // We'll need a 'for' loop to iterate over the array
-    for(var i = 0; i < this.cookEachHr.length; i++){
+    for(var i = 0; i < time.length; i++){
       // There are three parts to this process:
 
       // 1. Create an element
       var liEl = document.createElement('li');
 
       // 2. Give it content
-      liEl.textContent = time[i] + ':  ' + this.cookEachHr[i];
+      liEl.textContent = time[i] + ':  ' + this.cookEachHr[i] + ' cookies';
 
 
       // 3. Append it to a certain place in the DOM
@@ -64,10 +64,9 @@ var pike = {
       totalCust = this.sum(totalCust,this.custEachHr[i]);
 
     }
-
     return totalCust;
-
   },
+
 
   sumCook: function(){
     var totalCook = 0;
@@ -83,7 +82,7 @@ var pike = {
   total: function(){
     var pikeUL = document.getElementById('pike');
     var liEl = document.createElement('li');
-    liEl.textContent = 'Total' + ':  ' + this.sumCook();
+    liEl.textContent = 'Total' + ':  ' + this.sumCook() + ' cookies';
     pikeUL.appendChild(liEl);
   }
 
@@ -140,7 +139,7 @@ var seatac = {
       var liEl = document.createElement('li');
 
       // 2. Give it content
-      liEl.textContent = time[i] + ':  ' + this.cookEachHr[i];
+      liEl.textContent = time[i] + ':  ' + this.cookEachHr[i] + ' cookies';
 
       // 3. Append it to a certain place in the DOM
       // parentElement.appendChild(childElement)
@@ -179,7 +178,7 @@ var seatac = {
   total: function(){
     var seatacUl = document.getElementById('seatac');
     var liEl = document.createElement('li');
-    liEl.textContent = 'Total' + ':  ' + this.sumCook();
+    liEl.textContent = 'Total' + ':  ' + this.sumCook() + ' cookies';
     seatacUl.appendChild(liEl);
   }
 };
@@ -233,7 +232,7 @@ var seacenter = {
       var liEl = document.createElement('li');
 
       // 2. Give it content
-      liEl.textContent = time[i] + ':  ' + this.cookEachHr[i];
+      liEl.textContent = time[i] + ':  ' + this.cookEachHr[i] + ' cookies';
 
       // 3. Append it to a certain place in the DOM
       // parentElement.appendChild(childElement)
@@ -272,7 +271,7 @@ var seacenter = {
   total: function(){
     var seacenterUL = document.getElementById('seacenter');
     var liEl = document.createElement('li');
-    liEl.textContent = 'Total' + ':  ' + this.sumCook();
+    liEl.textContent = 'Total' + ':  ' + this.sumCook() + ' cookies';
     seacenterUL.appendChild(liEl);
   }
 };
@@ -327,7 +326,7 @@ var caphill = {
       var liEl = document.createElement('li');
 
       // 2. Give it content
-      liEl.textContent = time[i] + ':  ' + this.cookEachHr[i];
+      liEl.textContent = time[i] + ':  ' + this.cookEachHr[i] + ' cookies';
 
       // 3. Append it to a certain place in the DOM
       // parentElement.appendChild(childElement)
@@ -366,7 +365,7 @@ var caphill = {
   total: function(){
     var caphillUL = document.getElementById('caphill');
     var liEl = document.createElement('li');
-    liEl.textContent = 'Total' + ':  ' + this.sumCook();
+    liEl.textContent = 'Total' + ':  ' + this.sumCook() + ' cookies';
     caphillUL.appendChild(liEl);
   }
 };
@@ -420,7 +419,7 @@ var alki = {
       var liEl = document.createElement('li');
 
       // 2. Give it content
-      liEl.textContent = time[i] + ':  ' + this.cookEachHr[i];
+      liEl.textContent = time[i] + ':  ' + this.cookEachHr[i] + ' cookies';
 
       // 3. Append it to a certain place in the DOM
       // parentElement.appendChild(childElement)
@@ -459,7 +458,7 @@ var alki = {
   total: function(){
     var alkiUL = document.getElementById('alki');
     var liEl = document.createElement('li');
-    liEl.textContent = 'Total' + ':  ' + this.sumCook();
+    liEl.textContent = 'Total' + ':  ' + this.sumCook() + ' cookies';
     alkiUL.appendChild(liEl);
   }
 };
