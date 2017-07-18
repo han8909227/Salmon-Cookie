@@ -268,6 +268,7 @@ var seacenter = {
 
   },
 
+
   total: function(){
     var seacenterUL = document.getElementById('seacenter');
     var liEl = document.createElement('li');
