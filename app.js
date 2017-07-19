@@ -1,10 +1,12 @@
 'use strict';
 
-var time = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'];
+var time = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
 
 var shopObj = [];
+var hrSum = [];
 var shopLoc = ['1st and Pike','SeaTac Airport','Seattle Center','Capitol Hill','Alki'];
 var salesTable = document.getElementById('sales');
+// var tosserTable = document.getElementById('tosser');
 makeHeaderRow();
 
 
@@ -22,6 +24,16 @@ for(i = 0; i < shopLoc.length; i++){
   shopObj[i].render();
 }
 
+//sum each hr
+for(i = 0; i < time.length; i++){
+  var sum = shopObj[0].cookEachHr[i] + shopObj[1].cookEachHr[i] + shopObj[2].cookEachHr[i] + shopObj[3].cookEachHr[i] + shopObj[4].cookEachHr[i];
+  hrSum.push(sum);
+}
+
+footerSum();
+
+
+
 function Sales(name,minCust,maxCust,avgCook) {
 
   this.name = name;
@@ -31,6 +43,15 @@ function Sales(name,minCust,maxCust,avgCook) {
   this.totalCook = 0;
   this.custEachHr = [];
   this.cookEachHr = [];
+  this.tosser = [];
+
+  // this.numTosser = function(){
+  //   for(var i = 0; i < time.length; i++){
+  //     var divide = (this.cookEachHr[i]) / 20;
+  //     this.tosser.push(divide);
+  //   }
+  // };
+
 
 //random num generates # of cust in between the min/max customer per hr and push into an array
   this.custPerHr = function(){
@@ -58,14 +79,21 @@ function Sales(name,minCust,maxCust,avgCook) {
     trEl.appendChild(thEl);
     salesTable.appendChild(trEl);
 
-
+    //render data
     for(var i = 0; i < time.length; i++){
       var tdEl = document.createElement('td');
       tdEl.textContent = this.cookEachHr[i];
       trEl.appendChild(tdEl);
       salesTable.appendChild(trEl);
 
-    }};
+    }
+
+    thEl = document.createElement('th'); //loc total
+    thEl.textContent = this.totalCook;
+    trEl.appendChild(thEl);
+    salesTable.appendChild(trEl);
+
+  };
 
   shopObj.push(this);
 }
@@ -80,17 +108,34 @@ function makeHeaderRow(){
   trEl.appendChild(thEl);
   salesTable.appendChild(trEl);
 
+  //time header
   for(var i = 0; i < time.length; i++){
     thEl = document.createElement('th');
     thEl.textContent = time[i];
     trEl.appendChild(thEl);
     salesTable.appendChild(trEl);
   }
+
+  thEl = document.createElement('th');
+  thEl.textContent = 'Total:';
+  trEl.appendChild(thEl);
+  salesTable.appendChild(trEl);
 }
 
+function footerSum(){
+  var trEl = document.createElement('tr');
 
+  //spacer
+  var thEl = document.createElement('th');
+  thEl.textContent = 'Hr. Total:  ';
+  trEl.appendChild(thEl);
+  salesTable.appendChild(trEl);
 
+  for(var i = 0; i < time.length; i++){
+    var tdEl = document.createElement('td');
+    tdEl.textContent = hrSum[i];
+    trEl.appendChild(tdEl);
+    salesTable.appendChild(trEl);
 
-
-
-//end
+  }
+}
