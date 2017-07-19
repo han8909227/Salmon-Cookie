@@ -132,9 +132,9 @@ function footerSum(){
   salesTable.appendChild(trEl);
 
   for(var i = 0; i < time.length; i++){
-    var tdEl = document.createElement('td');
-    tdEl.textContent = hrSum[i];
-    trEl.appendChild(tdEl);
+    thEl = document.createElement('th');
+    thEl.textContent = hrSum[i];
+    trEl.appendChild(thEl);
     salesTable.appendChild(trEl);
 
   }
