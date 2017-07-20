@@ -139,7 +139,7 @@ function handleInput(event){
   var max = parseInt(event.target.max.value);
   var cookie = parseInt(event.target.cookie.value);
 
-
+  // create new object from user input using contructor
   new Sales(store,min,max,cookie);
 
   event.target.store.value = null;
