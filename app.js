@@ -17,7 +17,7 @@ function Sales(name,minCust,maxCust,avgCook) {
   this.totalCook = 0;
   this.custEachHr = [];
   this.cookEachHr = [];
-  this.tosser = [];
+
 
 //random num generates # of cust in between the min/max customer per hr and push into an array
   this.custPerHr = function(){
@@ -88,6 +88,7 @@ function makeHeaderRow(){
   trEl.appendChild(thEl);
   salesTable.appendChild(trEl);
 
+
   //time header
   for(var i = 0; i < time.length; i++){
     thEl = document.createElement('th');
@@ -126,6 +127,20 @@ function footerSum(){
 }
 
 
+//strech goal
+function handleSelect(event){
+  event.preventDefault();
+  if(!event.target.redo.value){
+    return alert('Field cannot be MT!');
+  }
+
+  if(event.target.redo.value = 'yes'){
+    shopObj.pop();
+    renderShop();
+  }
+}
+
+
 //handler function
 function handleInput(event){
   event.preventDefault();
@@ -152,6 +167,7 @@ function handleInput(event){
 
 //listner
 inputForm.addEventListener('submit', handleInput);
+inputForm.addEventListener('select', handleSelect);
 
 
 //calls rendering and methods in the constructor

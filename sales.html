@@ -23,20 +23,28 @@
         <legend>Chat submission form</legend>
 
         <label for="store">Store Name: </label>
-        <input name="store" type="text" /><br>
+        <input name="store" type="text" placeholder="enter store name" /><br>
 
         <label for="min">Minimum # of customer:  </label>
-        <input name="min" type="text" size="10" /><br>
+        <input name="min" type="text" size="12" placeholder="number please"/><br>
 
         <label for="max">Maximum # of customer:  </label>
-        <input name="max" type="text" size="10" /> <br>
+        <input name="max" type="text" size="12" placeholder="number please"/> <br>
 
         <label for="cookie">Average # of cookies / customer:   </label>
-        <input name="cookie" type="text" size="20" />
+        <input name="cookie" type="text" size="20" placeholder="number please"/>
 
 
         <button type="submit">Generate new store data</button>
       </fieldset>
+
+      <legand>Would you like to re-enter the data? </legend >
+      <select name='redo' onchange="this.form.submit()">
+        <<option value="blank" selected='selected'></option>
+        <<option value="yes">YES</option>
+        <<option value="no">NO</option>
+
+
     </form>
 
     <button id="clear-input-list">Clear all inputs! </button>
