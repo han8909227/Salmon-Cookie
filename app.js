@@ -62,11 +62,8 @@ function Sales(name,minCust,maxCust,avgCook) {
     salesTable.appendChild(trEl);
 
   };
-
   shopObj.push(this);
-
 }
-
 
 
 //create new store objects
@@ -127,18 +124,16 @@ function footerSum(){
 }
 
 
-//strech goal
+//user can clear what just been entered
 function handleSelect(event){
   event.preventDefault();
-  if(!event.target.redo.value){
-    return alert('Field cannot be MT!');
-  }
 
-  if(event.target.redo.value = 'yes'){
+  if(event.target.redo.value == 'yes'){
     shopObj.pop();
     renderShop();
   }
 }
+
 
 
 //handler function
@@ -149,6 +144,22 @@ function handleInput(event){
     return alert('Fields cannot be empty!');
   }
 
+  //strech goal: user can replace data for an existing object
+  for(var i = 0; i < shopObj.length; i++){
+    if(event.target.store.value == shopObj[i].name){
+      shopObj[i].minCust = parseInt(event.target.min.value);
+      shopObj[i].maxCust = parseInt(event.target.max.value);
+      shopObj[i].avgCook = parseInt(event.target.cookie.value);
+      shopObj[i].cookEachHr = [];
+      shopObj[i].custEachHr = [];
+      shopObj[i].totalCook = 0;
+      shopObj[i].render();
+      nullValue();
+      return renderShop();
+
+    }
+  }
+
   var store = event.target.store.value;
   var min = parseInt(event.target.min.value);
   var max = parseInt(event.target.max.value);
@@ -157,17 +168,25 @@ function handleInput(event){
   // create new object from user input using contructor
   new Sales(store,min,max,cookie);
 
-  event.target.store.value = null;
-  event.target.min.value = null;
-  event.target.max.value = null;
-  event.target.cookie.value = null;
+  nullValue();
   renderShop(); //calls rendering function
-}
 
+}
 
 //listner
 inputForm.addEventListener('submit', handleInput);
 inputForm.addEventListener('select', handleSelect);
+
+
+
+//null fields
+function nullValue(){
+  event.target.store.value = null;
+  event.target.min.value = null;
+  event.target.max.value = null;
+  event.target.cookie.value = null;
+}
+
 
 
 //calls rendering and methods in the constructor
