@@ -1,39 +1,13 @@
 'use strict';
 
 var time = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
-
 var shopObj = [];
-var hrSum = [];
-var shopLoc = ['1st and Pike','SeaTac Airport','Seattle Center','Capitol Hill','Alki'];
+var hrSum = []; //sum of all store each hr
 var salesTable = document.getElementById('sales');
-// var tosserTable = document.getElementById('tosser');
-makeHeaderRow();
+var inputForm = document.getElementById('input-form');
 
 
-new Sales('1st and Pike',23,65,6.3);
-new Sales('SeaTac Airport',3,24,1.2);
-new Sales('Seattle Center',11,38,3.7);
-new Sales('Capitol Hill',20,38,2.3);
-new Sales('Alki',2,16,4.6);
-
-for(var i = 0; i < shopLoc.length; i++){
-  shopObj[i].cookPerSale();
-}
-
-for(i = 0; i < shopLoc.length; i++){
-  shopObj[i].render();
-}
-
-//sum each hr
-for(i = 0; i < time.length; i++){
-  var sum = shopObj[0].cookEachHr[i] + shopObj[1].cookEachHr[i] + shopObj[2].cookEachHr[i] + shopObj[3].cookEachHr[i] + shopObj[4].cookEachHr[i];
-  hrSum.push(sum);
-}
-
-footerSum();
-
-
-
+//constructor
 function Sales(name,minCust,maxCust,avgCook) {
 
   this.name = name;
@@ -44,14 +18,6 @@ function Sales(name,minCust,maxCust,avgCook) {
   this.custEachHr = [];
   this.cookEachHr = [];
   this.tosser = [];
-
-  // this.numTosser = function(){
-  //   for(var i = 0; i < time.length; i++){
-  //     var divide = (this.cookEachHr[i]) / 20;
-  //     this.tosser.push(divide);
-  //   }
-  // };
-
 
 //random num generates # of cust in between the min/max customer per hr and push into an array
   this.custPerHr = function(){
@@ -72,6 +38,8 @@ function Sales(name,minCust,maxCust,avgCook) {
 
 
   this.render = function(){
+
+    this.cookPerSale();
     var trEl = document.createElement('tr'); // create the row element
 
     var thEl = document.createElement('th'); // create loc info
@@ -96,9 +64,21 @@ function Sales(name,minCust,maxCust,avgCook) {
   };
 
   shopObj.push(this);
+
 }
 
 
+
+//create new store objects
+new Sales('1st and Pike',23,65,6.3);
+new Sales('SeaTac Airport',3,24,1.2);
+new Sales('Seattle Center',11,38,3.7);
+new Sales('Capitol Hill',20,38,2.3);
+new Sales('Alki',2,16,4.6);
+
+
+
+//header row maker
 function makeHeaderRow(){
   var trEl = document.createElement('tr');  //create a row
 
@@ -122,20 +102,66 @@ function makeHeaderRow(){
   salesTable.appendChild(trEl);
 }
 
+//footer calculator and render
 function footerSum(){
+
+  for(var i = 0; i < time.length; i++){
+    var sum = shopObj[0].cookEachHr[i] + shopObj[1].cookEachHr[i] + shopObj[2].cookEachHr[i] + shopObj[3].cookEachHr[i] + shopObj[4].cookEachHr[i];
+    hrSum.push(sum);
+  }
+
   var trEl = document.createElement('tr');
 
   //spacer
   var thEl = document.createElement('th');
   thEl.textContent = 'Hr. Total:  ';
   trEl.appendChild(thEl);
-  salesTable.appendChild(trEl);
 
-  for(var i = 0; i < time.length; i++){
+  for(i = 0; i < time.length; i++){
     thEl = document.createElement('th');
     thEl.textContent = hrSum[i];
     trEl.appendChild(thEl);
-    salesTable.appendChild(trEl);
-
   }
+  salesTable.appendChild(trEl);
 }
+
+
+//handler function
+function handleInput(event){
+  event.preventDefault();
+
+  if (!event.target.store.value || !event.target.min.value || !event.target.max.value || !event.target.cookie) {
+    return alert('Fields cannot be empty!');
+  }
+
+  var store = event.target.store.value;
+  var min = parseInt(event.target.min.value);
+  var max = parseInt(event.target.max.value);
+  var cookie = parseInt(event.target.cookie.value);
+
+  // create new object from user input using contructor
+  new Sales(store,min,max,cookie);
+
+  event.target.store.value = null;
+  event.target.min.value = null;
+  event.target.max.value = null;
+  event.target.cookie.value = null;
+  renderShop(); //calls rendering function
+}
+
+
+//listner
+inputForm.addEventListener('submit', handleInput);
+
+
+//calls rendering and methods in the constructor
+function renderShop(){
+  salesTable.innerHTML = '';  //empty table 1st b4 re-rendering
+  makeHeaderRow();
+  for(var i = 0; i < shopObj.length; i++){
+    shopObj[i].render();
+  }
+  footerSum();
+}
+
+renderShop();
