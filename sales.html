@@ -18,7 +18,34 @@
 
     <table id="sales"></table>
 
-    <table id="tosser"></table>
+    <form id="input-form">
+      <fieldset>
+        <legend>Chat submission form</legend>
+
+        <label for="store">Store Name: </label>
+        <input name="store" type="text" />
+
+        <label for="min">Minimum # of customer:  </label>
+        <input name="min" type="text" size="50" />
+
+        <label for="max">Maximum # of customer:  </label>
+        <input name="max" type="text" size="50" />
+
+        <label for="cookie">Average # of cookies / customer:   </label>
+        <input name="cookie" type="text" size="50" />
+
+
+        <button type="submit">Generate new store data</button>
+      </fieldset>
+    </form>
+
+    <button id="clear-input-list">Clear all inputs! </button>
+
+    <ul id="input-list"></ul>
+
+
+
+
     <script src="app.js"></script>
 
   </body>
