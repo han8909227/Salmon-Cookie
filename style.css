@@ -17,27 +17,10 @@ button {
 
 button:hover {
         color: red
-        border: 2px solid black; 
+        border: 2px solid black;
         background-color: red;
 }
 
-#page{
-
-  margin: auto;
-  padding: 10px;
-  border:5px double grey;
-  background-color: grey;
-
-}
-
-#logo{
-  width: 100%;
-  font-family: 'Zilla Slab', serif;
-  font-size: 20px;
-  display: inline;
-  position:relative;
-  margin:auto;
-}
 
 
 input {

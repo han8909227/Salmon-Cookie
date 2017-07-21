@@ -1,0 +1,85 @@
+
+body{
+  background-color: #FAE5D3;
+}
+
+
+figcaption{
+  font-family: serif;
+  font-size: 110%;
+  border: 100px 100px;
+}
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #FEF9E7;
+}
+
+li a {
+    display: block;
+    font-size: 130%;
+    padding: 8px 16px;
+}
+
+
+li a:hover {
+    background-color: salmon;
+    color: white;
+}
+
+.navigation{
+  position: fixed;
+}
+
+
+.pic{
+  display:inline-block;
+  outline-color: black;
+  text-align: center;
+}
+
+.pic2{
+  display:inline-block;
+  text-align: center;
+}
+
+.family{
+  align-items: center;
+  text-align: center;
+
+
+}
+
+
+.address{
+  float: left;
+  width: 300px;
+  height: 800px;
+  border: 2px black;
+  background-color: #B2BABB;
+  font-size: 110%;
+  font-family: sans-serif;
+}
+
+
+.hero{
+  background: url('https://github.com/codefellows/seattle-201d24/blob/master/class-09-css_wireframe_part_1/lab/assets/chinook.jpg?raw=true')10%;
+  background-size: cover;
+  height: 320px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.hero-text {
+    color:white;
+    font-size: 170%;
+    text-shadow: 2px black;
+  }
+}
