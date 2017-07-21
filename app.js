@@ -173,13 +173,14 @@ function handleInput(event){
 
 }
 
+
 //listner
 inputForm.addEventListener('submit', handleInput);
 inputForm.addEventListener('select', handleSelect);
 
 
 
-//null fields
+//null fields function
 function nullValue(){
   event.target.store.value = null;
   event.target.min.value = null;
