@@ -6,8 +6,7 @@ body{
 
 figcaption{
   font-family: serif;
-  font-size: 110%;
-  border: 100px 100px;
+  font-size: 140%
 }
 
 
@@ -29,6 +28,14 @@ li a {
 li a:hover {
     background-color: salmon;
     color: white;
+}
+
+h2{
+  font-family: sans-serif;
+  font-size: 170%;
+  margin:auto;
+
+
 }
 
 .navigation{
