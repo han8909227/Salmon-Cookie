@@ -1,10 +1,10 @@
 'use strict';
 
-var time = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
-var shopObj = [];
-var hrSum = []; //sum of all store each hr
-var salesTable = document.getElementById('sales');
-var inputForm = document.getElementById('input-form');
+let time = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
+let shopObj = [];
+let hrSum = []; //sum of all store each hr
+let salesTable = document.getElementById('sales');
+let inputForm = document.getElementById('input-form');
 
 
 //constructor
@@ -21,7 +21,7 @@ function Sales(name,minCust,maxCust,avgCook) {
 
 //random num generates # of cust in between the min/max customer per hr and push into an array
   this.custPerHr = function(){
-    for(var i = 0; i < time.length; i++){
+    for(let i = 0; i < time.length; i++){
       this.custEachHr.push(Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust);
     }
   };
@@ -30,7 +30,7 @@ function Sales(name,minCust,maxCust,avgCook) {
 //generate the number of sale for each day and push into an array
   this.cookPerSale = function(){
     this.custPerHr();
-    for(var i = 0; i < time.length; i++){
+    for(let i = 0; i < time.length; i++){
       this.cookEachHr.push(Math.ceil(this.custEachHr[i] * this.avgCook));
       this.totalCook += this.cookEachHr[i];
     }
@@ -40,16 +40,16 @@ function Sales(name,minCust,maxCust,avgCook) {
   this.render = function(){
 
     this.cookPerSale();
-    var trEl = document.createElement('tr'); // create the row element
+    let trEl = document.createElement('tr'); // create the row element
 
-    var thEl = document.createElement('th'); // create loc info
+    let thEl = document.createElement('th'); // create loc info
     thEl.textContent = this.name;
     trEl.appendChild(thEl);
     salesTable.appendChild(trEl);
 
     //render data
-    for(var i = 0; i < time.length; i++){
-      var tdEl = document.createElement('td');
+    for(let i = 0; i < time.length; i++){
+      let tdEl = document.createElement('td');
       tdEl.textContent = this.cookEachHr[i];
       trEl.appendChild(tdEl);
       salesTable.appendChild(trEl);
@@ -77,17 +77,17 @@ new Sales('Alki',2,16,4.6);
 
 //header row maker
 function makeHeaderRow(){
-  var trEl = document.createElement('tr');  //create a row
+  let trEl = document.createElement('tr');  //create a row
 
   //spacer
-  var thEl = document.createElement('th');
+  let thEl = document.createElement('th');
   thEl.textContent = 'Loc/Time ';
   trEl.appendChild(thEl);
   salesTable.appendChild(trEl);
 
 
   //time header
-  for(var i = 0; i < time.length; i++){
+  for(let i = 0; i < time.length; i++){
     thEl = document.createElement('th');
     thEl.textContent = time[i];
     trEl.appendChild(thEl);
@@ -103,15 +103,15 @@ function makeHeaderRow(){
 //footer calculator and render
 function footerSum(){
 
-  for(var i = 0; i < time.length; i++){
-    var sum = shopObj[0].cookEachHr[i] + shopObj[1].cookEachHr[i] + shopObj[2].cookEachHr[i] + shopObj[3].cookEachHr[i] + shopObj[4].cookEachHr[i];
+  for(let i = 0; i < time.length; i++){
+    let sum = shopObj[0].cookEachHr[i] + shopObj[1].cookEachHr[i] + shopObj[2].cookEachHr[i] + shopObj[3].cookEachHr[i] + shopObj[4].cookEachHr[i];
     hrSum.push(sum);
   }
 
-  var trEl = document.createElement('tr');
+  let trEl = document.createElement('tr');
 
   //spacer
-  var thEl = document.createElement('th');
+  let thEl = document.createElement('th');
   thEl.textContent = 'Hr. Total:  ';
   trEl.appendChild(thEl);
 
@@ -145,7 +145,7 @@ function handleInput(event){
   }
 
   //strech goal: user can replace data for an existing object
-  for(var i = 0; i < shopObj.length; i++){
+  for(let i = 0; i < shopObj.length; i++){
     if(event.target.store.value == shopObj[i].name){
       shopObj[i].minCust = parseInt(event.target.min.value);
       shopObj[i].maxCust = parseInt(event.target.max.value);
@@ -160,10 +160,10 @@ function handleInput(event){
     }
   }
 
-  var store = event.target.store.value;
-  var min = parseInt(event.target.min.value);
-  var max = parseInt(event.target.max.value);
-  var cookie = parseInt(event.target.cookie.value);
+  let store = event.target.store.value;
+  let min = parseInt(event.target.min.value);
+  let max = parseInt(event.target.max.value);
+  let cookie = parseInt(event.target.cookie.value);
 
   // create new object from user input using contructor
   new Sales(store,min,max,cookie);
@@ -194,7 +194,7 @@ function nullValue(){
 function renderShop(){
   salesTable.innerHTML = '';  //empty table 1st b4 re-rendering
   makeHeaderRow();
-  for(var i = 0; i < shopObj.length; i++){
+  for(let i = 0; i < shopObj.length; i++){
     shopObj[i].render();
   }
   footerSum();
